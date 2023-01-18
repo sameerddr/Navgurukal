@@ -534,6 +534,8 @@ function PathwayCourse() {
                   key={index}
                   xs={12}
                   md={3}
+                  // check the condition for progress bar that it is completed as full(green) if is completed i.e. we can now move to next course
+
                   className={
                     parseInt(
                       completedPortion[
@@ -543,15 +545,6 @@ function PathwayCourse() {
                       ? `${classes.courseCard} diableClassess`
                       : classes.courseCard
                   }>
-                  {parseInt(
-                    completedPortion[
-                      index > 0 ? filterPathwayCourse[index - 1].id : 0
-                    ]
-                  ) === 0 ? (
-                    <LockIcon />
-                  ) : (
-                    <LockOpenIcon />
-                  )}
                   <Link
                     className={classes.pathwayLink}
                     to={interpolatePath(PATHS.PATHWAY_COURSE_CONTENT, {
@@ -563,6 +556,17 @@ function PathwayCourse() {
                       className={classes.pathwayCard}
                       elevation={0}
                       sx={{ ml: 3, p: "16px", mb: isActive ? "0px" : "16px" }}>
+                      {/* checked the codition for LockIcon  */}
+
+                      {parseInt(
+                        completedPortion[
+                          index > 0 ? filterPathwayCourse[index - 1].id : 0
+                        ]
+                      ) === 0 ? (
+                        <LockIcon />
+                      ) : (
+                        ""
+                      )}
                       <img
                         className={classes.courseImage}
                         src={item.logo}
