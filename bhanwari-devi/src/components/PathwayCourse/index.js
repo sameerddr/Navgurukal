@@ -19,7 +19,6 @@ import { ReactComponent as CertificateIcon } from "./asset/certificate-grey.svg"
 import { ReactComponent as CertificateIconColored } from "./asset/certificate-color.svg";
 import Modal from "@mui/material/Modal";
 import LockIcon from "@mui/icons-material/Lock";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 // import ReactPDF from "./ReactPDF.js";
 import {
   Container,
@@ -526,7 +525,6 @@ function PathwayCourse() {
             sx={{ textAlign: isActive && "center" }}>
             Courses
           </Typography>{" "}
-          <br />
           <Grid container spacing={3} align="center">
             {filterPathwayCourse?.map((item, index) => (
               <>
@@ -556,8 +554,12 @@ function PathwayCourse() {
                       className={classes.pathwayCard}
                       elevation={0}
                       sx={{ ml: 3, p: "16px", mb: isActive ? "0px" : "16px" }}>
+                      <img
+                        className={classes.courseImage}
+                        src={item.logo}
+                        alt="course"
+                      />
                       {/* checked the codition for LockIcon  */}
-
                       {parseInt(
                         completedPortion[
                           index > 0 ? filterPathwayCourse[index - 1].id : 0
@@ -567,11 +569,6 @@ function PathwayCourse() {
                       ) : (
                         ""
                       )}
-                      <img
-                        className={classes.courseImage}
-                        src={item.logo}
-                        alt="course"
-                      />
                       <CardContent
                         sx={{
                           height: isActive ? "60px" : "70px",
